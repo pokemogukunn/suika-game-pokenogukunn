@@ -1,1 +1,23 @@
-n
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "scripts.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/scripts.js"
+    }
+  ]
+}

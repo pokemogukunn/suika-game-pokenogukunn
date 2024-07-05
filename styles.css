@@ -11,10 +11,12 @@ body {
     border: 1px solid #ccc;
     padding: 10px;
     background-color: #f9f9f9;
+    justify-content: center; /* フレックスアイテムを中央に配置 */
 }
 
 .fruit {
     font-size: 2em;
     margin: 10px;
     cursor: grab;
+    display: inline-block;
 }

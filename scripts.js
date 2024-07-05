@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     const fruits = document.querySelectorAll('.fruit');
-    
+
     fruits.forEach(fruit => {
         fruit.addEventListener('dragstart', handleDragStart);
         fruit.addEventListener('dragover', handleDragOver);
@@ -13,6 +13,7 @@ let draggedElement = null;
 function handleDragStart(event) {
     draggedElement = event.target;
     event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/plain', event.target.dataset.fruit);
 }
 
 function handleDragOver(event) {
@@ -22,13 +23,13 @@ function handleDragOver(event) {
 
 function handleDrop(event) {
     event.preventDefault();
-    if (event.target.className === 'fruit' && draggedElement !== event.target) {
-        const draggedEmoji = draggedElement.textContent;
-        const targetEmoji = event.target.textContent;
-        if (draggedEmoji === targetEmoji) {
-            event.target.textContent = getNextFruit(draggedEmoji);
-            draggedElement.remove();
-        }
+    const draggedFruit = event.dataTransfer.getData('text/plain');
+    const targetFruit = event.target.dataset.fruit;
+
+    if (draggedElement !== event.target && draggedFruit === targetFruit) {
+        event.target.textContent = getNextFruit(draggedFruit);
+        event.target.dataset.fruit = getNextFruit(draggedFruit);
+        draggedElement.remove();
     }
 }
 

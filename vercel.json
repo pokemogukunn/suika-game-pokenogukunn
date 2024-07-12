@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "scripts.js",
+      "src": "js/scripts.js",
       "use": "@vercel/node"
     },
     {
@@ -13,11 +13,11 @@
   "routes": [
     {
       "src": "/",
-      "dest": "/index.html"
+      "dest": "/index2.html"
     },
     {
       "src": "/(.*)",
-      "dest": "/scripts.js"
+      "dest": "/js/scripts.js"
     }
   ]
 }
